@@ -1,0 +1,24 @@
+.body {
+    height: 1000px;
+    width: 1000px;
+}
+
+.mainGrid {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 500px;
+    height: 500px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.squares {
+    height: 1px;
+    width: 1px;
+    background-color: black;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
