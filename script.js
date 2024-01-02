@@ -13,6 +13,7 @@ function createStartGrid() {
         let gridSquare = document.createElement('div');
         gridSquare.classList.add('squares');
         mainGrid.appendChild(gridSquare);
+        document.getElementById('mainGridSize').style.width = sliderSize * 6 + "px";  // IF YOU CHANGE THE .squares PIXEL SIZE IN THE CSS FILE DON'T FORGET TO CHANGE THE VALUE YOU MULTIPLY WITH newValue
     };
 };
 
@@ -35,7 +36,23 @@ slider.addEventListener('input', () => {
                 mainGrid.removeChild(squares);
             };
     };
-    sliderSize = newValue;
+    document.getElementById('mainGridSize').style.width = newValue * 6 + "px";
+    sliderSize = newValue; // IF YOU CHANGE THE .squares PIXEL SIZE IN THE CSS FILE DON'T FORGET TO CHANGE THE VALUE YOU MULTIPLY WITH newValue
     console.log(mainGrid.childElementCount);
 });
 
+
+
+
+
+/*  
+
+    Make 3 buttons that let you choose between 1px, 2px, 4px
+
+    Each button selection should increase the squares pixel size by a multiple of the selection
+
+    (currently set to 6px in CSS file, so 1px = 1*6, 2px = 2*6, 4px = 4*6) 
+    
+    thus making them larger (so fewer squares total) to give the appearance of a changing pen size
+
+*/

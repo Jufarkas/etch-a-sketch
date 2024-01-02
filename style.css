@@ -1,24 +1,21 @@
-.body {
-    height: 1000px;
-    width: 1000px;
+* {
+    box-sizing: border-box;
 }
+
 
 .mainGrid {
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
-    width: 500px;
-    height: 500px;
-    border: 0;
-    padding: 0;
-    margin: 0;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .squares {
-    height: 1px;
-    width: 1px;
-    background-color: black;
-    border: 0;
-    padding: 0;
-    margin: 0;
+    height: 6px;
+    width: 6px;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(146, 146, 146);
 }
