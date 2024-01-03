@@ -2,20 +2,37 @@
     box-sizing: border-box;
 }
 
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridContainer {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 600px;
+    width: 600px; 
+}
 
 .mainGrid {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    height: 100%;
+    flex: 1;
+    height: 600px;
+    width: 600px; 
 }
 
 .squares {
-    height: 6px;
-    width: 6px;
+    flex: 1;
+    aspect-ratio: 1/1;
     background-color: transparent;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(146, 146, 146);
 }
+
