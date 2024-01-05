@@ -79,19 +79,6 @@ function squareListener() {
 };
 
 
-//*********************************************************************
-
-
-// let mDown = false;
-
-// ['mousedown', 'mouseup'].forEach(eName => 
-//     squares.addEventListener(eName, () => 
-//     mDown = !mDown));
-
-//*********************************************************************
-
-
-
 //*********************** CREATE START GRID *********************//
 
 function createStartGrid() {
