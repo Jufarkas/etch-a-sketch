@@ -8,14 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bodyContainer">
-        <div class="gridContainer">
+    <div class="container">
             <div class="mainGrid" id="mainGridSize"></div>
-        </div>
         <div class="gridSlider">
-            <input type="range" min="10" max="40" value="10" class="slider">
+            <input type="range" min="10" max="80" value="10" class="slider" step="1" list="sliderSteps">
         </div>
+        <!-- <datalist id="sliderSteps">
+            <option value="10" label="10"></option>
+            <option value="15" label="15"></option>
+            <option value="20" label="20"></option>
+            <option value="25" label="25"></option>
+            <option value="30" label="30"></option>
+            <option value="35" label="35"></option>
+            <option value="40" label="40"></option>
+          </datalist> -->
       <div class="gridSliderOutput"></div>
+      <button class="clearButton">Clear</button>
+      <button class="removeGridLines">Remove Grid</button>
     </div>
 </body>
 </html>

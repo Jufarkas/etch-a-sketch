@@ -2,19 +2,43 @@
     box-sizing: border-box;
 }
 
-.bodyContainer {
+.slider {
+    cursor: pointer;
+    width: 350px;
+    color: blue;
+}
+
+.gridSliderOutput {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 900;
+    width: 350px;
+    text-align: center;
+    padding: 7px;
+}
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.gridContainer {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    height: 600px;
-    width: 600px; 
+.clearButton, .removeGridLines {
+    cursor: pointer;
+    padding: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.clearButton:hover {
+    background-color: rgb(253, 80, 80);
+}
+
+.removeGridLines:hover {
+    background-color: rgb(80, 253, 80);
 }
 
 .mainGrid {
@@ -25,14 +49,16 @@
     flex: 1;
     height: 600px;
     width: 600px; 
+    color: black;
+    background-color: rgba(202, 250, 202, 0.527);
 }
 
-.squares {
-    flex: 1;
+.square {
+    height: 60px;
+    width: 60px;
+    flex-grow: 1;
     aspect-ratio: 1/1;
-    background-color: transparent;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(146, 146, 146);
 }
-

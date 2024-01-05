@@ -1,101 +1,110 @@
+const mainGrid = document.querySelector('.mainGrid');
+let allSquares = document.querySelectorAll('.squares');
 
-///************** SETUP TO USE ADJUSTABLE SLIDER THAT CHANGES GRID SIZE **************///
+const clearGrid = document.querySelector('.clearButton');
+const removeGridLines = document.querySelector('.removeGridLines');
 
+//***************************** SLIDER ***********************//
 
 let slider = document.querySelector('.slider');
-let output = document.querySelector('.gridSliderOutput');
-let mainGrid = document.querySelector('.mainGrid');
-let applyButton = document.querySelector('.applyGridSize');
+
+let sliderOutput = document.querySelector('.gridSliderOutput');
+sliderOutput.textContent = slider.value + " x " + slider.value;
+
 let sliderSize = slider.value;
-output.textContent = slider.value + " x " + slider.value;
 
 slider.oninput = function() {
-    output.textContent = this.value + " x " + this.value;
+    sliderOutput.textContent = this.value + " x " + this.value;
 };
 
+
+//************* 'Clear' AND 'Remove Grid' BUTTONS *************//
+
+clearGrid.addEventListener('click', () => {
+    const squares = document.querySelectorAll('.square');
+        squares.forEach(squares => {
+        squares.style.removeProperty('background-color');
+        });
+});
+
+// remove grid button below
+
+removeGridLines.addEventListener('click', () => {
+    if (removeGridLines.textContent == "Remove Grid"){
+        const squares = document.querySelectorAll('div');
+        squares.forEach(squares => {
+            squares.style.borderColor = "transparent";
+        });
+    } else {
+        const squares = document.querySelectorAll('div');
+        squares.forEach(squares => {
+        squares.style.borderColor = "rgb(146, 146, 146)";
+        });
+    };
+
+    if (removeGridLines.textContent == "Remove Grid") {
+        removeGridLines.textContent = "Add Grid";
+    } else {
+        removeGridLines.textContent = "Remove Grid";
+    };
+});
+
+
+//***************** FUNCTION TO RESIZE SQUARES ******************//
+
+function resizeGrid() {
+    const squareSize = document.querySelectorAll('.square');
+    squareSize.forEach(squares => {
+        squares.style.width = 600 / slider.value + "px";
+        squares.style.height = 600 / slider.value + "px";
+        squares.style.backgroundColor = "transparent";
+    });
+    squareListener();
+};
+
+
+// add event listener to squares
+
+function squareListener() {
+    const squareSize = document.querySelectorAll('.square');
+    squareSize.forEach(squares => {
+        squares.addEventListener('mouseover', (e) =>{
+            squares.style.backgroundColor = "black";
+            });
+    });
+};
+
+
+//*********************** CREATE START GRID *********************//
 
 function createStartGrid() {
     for (let x = 0; x < (slider.value * slider.value); x++) {
-        let gridSquare = document.createElement('div');
-        gridSquare.classList.add('squares');
-        mainGrid.appendChild(gridSquare);
-
-        const squareSize = document.querySelectorAll('.squares');
-        squareSize.forEach(squares => {
-            squares.style.width = slider.value * 6 + "px";
-            squares.style.height = slider.value * 6 + "px";
-        });
-
+        let startSquare = document.createElement('div');
+        startSquare.classList.add('square');
+        mainGrid.appendChild(startSquare);
     };
+    squareListener()
 };
-
 
 createStartGrid();
 
+//****** ADD / REMOVE GRID SQUARES BASED ON SLIDER VALUE ******//
 
-/*************** FUNCTION TO APPLY CSS CHANGES TO DIVS TO FIT GRID ***************/
-
-function resizeGrid() {
-    const squareSize = document.querySelectorAll('.squares');
-                squareSize.forEach(squares => {
-                    squares.style.width = 600 / slider.value + "px";
-                    squares.style.height = 600 / slider.value + "px";
-    });
-}
-
-/******************** EVENT LISTENER FOR SLIDER TO RESIZE GRID ********************/
 
 slider.addEventListener('input', () => {
     let newValue = slider.value;
     if (newValue > sliderSize) {
-        for (let x = mainGrid.childElementCount +1; x <= (newValue * newValue); x++){
-            let gridSquare = document.createElement('div');
-            gridSquare.classList.add('squares');
-            mainGrid.appendChild(gridSquare);
-            resizeGrid()
+        for (let x = mainGrid.childElementCount; x < (newValue * newValue); x++){
+            let newSquare = document.createElement('div');
+            newSquare.classList.add('square');
+            mainGrid.appendChild(newSquare);
         };
     } else if (newValue < sliderSize){
-        for (let x = mainGrid.childElementCount -1; x >= (newValue * newValue); x--){
-            let squares = document.querySelector('.squares');
-            mainGrid.removeChild(squares);
-            resizeGrid()
+        for (let x = mainGrid.childElementCount; x > (newValue * newValue); x--){
+            let oldSquare = document.querySelector('.square');
+            mainGrid.removeChild(oldSquare);
         };
     };
     sliderSize = newValue;
+    resizeGrid();
 });
-
-
-
-/******************* FUNCTION TO CREATE RESIZABLE GRID WITH SLIDER *******************/
-
-
-// slider.addEventListener('input', () => {
-//     let newValue = slider.value;
-//     if (newValue > sliderSize) {
-//         for (let x = mainGrid.childElementCount +1; x <= (newValue * newValue); x++){
-//             let gridSquare = document.createElement('div');
-//             gridSquare.classList.add('squares');
-//             mainGrid.appendChild(gridSquare);
-
-//             const squareSize = document.querySelectorAll('.squares');
-//                 squareSize.forEach(squares => {
-//                     squares.style.width = 600 / slider.value + "px";
-//                     squares.style.height = 600 / slider.value + "px";
-//                 });
-//         };
-//     } else if (newValue < sliderSize){
-//         for (let x = mainGrid.childElementCount -1; x >= (newValue * newValue); x--){
-//             let squares = document.querySelector('.squares');
-//             mainGrid.removeChild(squares);
-
-
-//             const squareSize = document.querySelectorAll('.squares');
-//                 squareSize.forEach(squares => {
-//                     squares.style.width = 600 / slider.value + "px";
-//                     squares.style.height = 600 / slider.value+ "px";
-//                 });
-//        };
-//     };
-//     sliderSize = newValue;
-// });
-
