@@ -68,11 +68,28 @@ function resizeGrid() {
 function squareListener() {
     const squareSize = document.querySelectorAll('.square');
     squareSize.forEach(squares => {
-        squares.addEventListener('mouseover', (e) =>{
-            squares.style.backgroundColor = "black";
-            });
+        squares.addEventListener('mousemove', e =>{
+            if (e.buttons === 1){
+                squares.style.backgroundColor = "black";
+            } else if (e.buttons === 2){
+                squares.style.backgroundColor = "transparent";
+            };
+        });
     });
 };
+
+
+//*********************************************************************
+
+
+// let mDown = false;
+
+// ['mousedown', 'mouseup'].forEach(eName => 
+//     squares.addEventListener(eName, () => 
+//     mDown = !mDown));
+
+//*********************************************************************
+
 
 
 //*********************** CREATE START GRID *********************//
