@@ -6,16 +6,30 @@
     <title>Etch-A-Sketch</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <h1 class="header">Etch-A-Sketch</h1>
+
+        <div class="gridCover">
             <div class="mainGrid" id="mainGridSize" ondragstart="return false;" oncontextmenu="return false;"></div>
-        <div class="gridSlider">
-            <input type="range" min="10" max="80" value="10" class="slider" step="1" list="sliderSteps">
+            <div class="sliderContainer">
+                <div class="gridSlider">
+                    <input type="range" min="10" max="80" value="10" class="slider" step="1" list="sliderSteps">
+                </div>
+                <div class="gridSliderOutput"></div>
+            </div>
+        
+            <div class="buttonContainer">
+                <button class="clearButton" role="button">Clear</button>
+                <button class="removeGridLines" role="button">Remove Grid</button>
+                <button class="changeColor">Colour</button>
+            </div>
+            <p>*Click and hold to draw, right click to erase*</p>
         </div>
-      <div class="gridSliderOutput"></div>
-      <button class="clearButton">Clear</button>
-      <button class="removeGridLines">Remove Grid</button>
     </div>
 </body>
 </html>
