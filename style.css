@@ -2,6 +2,35 @@
     box-sizing: border-box;
 }
 
+body {
+    margin-top: 50px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+}
+
+p { 
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.header{
+    font-size: 50px;
+    font-family: "Lemon", Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 255, 255), 0 0 0.2em rgba(0, 0, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border: 0;
+    padding: 15px;
+}
+
+
 .slider {
     cursor: pointer;
     width: 350px;
@@ -9,39 +38,72 @@
 }
 
 .gridSliderOutput {
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-family: 'Lemon', Times, serif;
+    font-size: 35px;
     font-weight: 900;
     width: 350px;
     text-align: center;
     padding: 7px;
+    text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 255, 255), 0 0 0.2em rgba(0, 0, 255, 0.5);
 }
 
 .container {
+    border-radius: 25px;
+    width: 730px;
+    height: 920px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: rgb(109, 0, 0);
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.527),
+    0 6.7px 5.3px rgb(49, 49, 49),
+    0 12.5px 10px rgb(88, 88, 88),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.623),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.buttonContainer {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.sliderContainer {
+    padding: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.clearButton, .removeGridLines {
-    cursor: pointer;
-    padding: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-}
-
 .clearButton:hover {
-    background-color: rgb(253, 80, 80);
+    background-color: rgba(255, 0, 0, 0.555);
 }
 
 .removeGridLines:hover {
-    background-color: rgb(80, 253, 80);
+    background-color: rgba(0, 155, 226, 0.555);
+}
+
+.changeColor:hover {
+    background-color: rgba(134, 5, 255, 0.555);
+}
+
+.gridCover {
+    border-radius: 2%;
+    height: 650px;
+    width: 650px;
+    border: black;
+    border-width: 25px;
+    border-style: solid;
 }
 
 .mainGrid {
+    box-shadow: rgb(114, 114, 114) 0px 0px 10px 5px inset;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -50,7 +112,7 @@
     height: 600px;
     width: 600px; 
     color: black;
-    background-color: transparent;
+    background-color: white;
 }
 
 .square {
@@ -61,4 +123,140 @@
     border-style: solid;
     border-width: 1px;
     border-color: rgb(146, 146, 146);
+}
+
+
+
+/* CSS */
+.clearButton, .removeGridLines, .changeColor {
+    appearance: button;
+    background-color: #00000085;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 6px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 6px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.clearButton:after {
+    background-clip: padding-box;
+    background-color: #8b0000;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.removeGridLines:after {
+    background-clip: padding-box;
+    background-color: #003985;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+.changeColor:after {
+    background-clip: padding-box;
+    background-color: rgba(255, 80, 255, 0.664);
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.clearButton:main,
+.clearButton:focus {
+    user-select: auto;
+}
+
+.removeGridLines:main,
+.removeGridLines:focus {
+    user-select: auto;
+}
+
+.changeColor:main,
+.changeColor:focus {
+    user-select: auto;
+}
+
+.clearButton:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.removeGridLines:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.changeColor:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.clearButton:disabled {
+    cursor: auto;
+}
+
+.removeGridLines:disabled {
+    cursor: auto;
+}
+
+.changeColor:disabled {
+    cursor: auto;
+}
+
+.clearButton:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+.removeGridLines:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+.changeColor:active {
+    border-width: 4px 0 0;
+    background: none;
 }
