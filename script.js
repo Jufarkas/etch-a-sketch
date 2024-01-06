@@ -31,12 +31,12 @@ clearGrid.addEventListener('click', () => {
 
 removeGridLines.addEventListener('click', () => {
     if (removeGridLines.textContent == "Remove Grid"){
-        const squares = document.querySelectorAll('div');
+        const squares = document.querySelectorAll('.square');
         squares.forEach(squares => {
             squares.style.borderColor = "transparent";
         });
     } else {
-        const squares = document.querySelectorAll('div');
+        const squares = document.querySelectorAll('.square');
         squares.forEach(squares => {
         squares.style.borderColor = "rgb(146, 146, 146)";
         });
@@ -58,6 +58,11 @@ function resizeGrid() {
         squares.style.width = 600 / slider.value + "px";
         squares.style.height = 600 / slider.value + "px";
         squares.style.backgroundColor = "transparent";
+// below is to stop new squares from having a grid when 
+// they're created if user has turned off grid already
+        if (removeGridLines.textContent == "Add Grid"){ 
+            squares.style.borderColor = "transparent";
+        };
     });
     squareListener();
 };
