@@ -26,13 +26,15 @@
             <div class="buttonContainer">
                 <button class="clearButton">Clear</button>
                 <button class="removeGridLines">Remove Grid</button>
-                <button class="changeColor">Colour</button>
+                <label for="changeColour" id="colour">Colour</label>
+                <input class="changeColour" type="color">
+                
             </div>
             <div class="modeInput">
-                <p class="mode">Confetti Mode</p><label class="confettiMode"><input type="checkbox"><span class="confirmConfetti"></span></label>
-                <p class="mode">Gradient Mode</p><label class="gradientMode"><input type="checkbox"><span class="confirmGradient"></span></label>
+                <p class="mode">Confetti Mode</p><label class="confettiMode"><input type="checkbox" id="confettiCheck"><span class="confirmConfetti"></span></label>
+                <p class="mode">Gradient Mode</p><label class="gradientMode"><input type="checkbox" id="gradientCheck"><span class="confirmGradient"></span></label>
             </div>
-            <p class="instructions">*Click and hold to draw. Hold right click to erase*</p>
+            <p class="instructions">*Click + hold to draw. Right click + hold to erase*</p>
         </div>
     </div>
 </body>
