@@ -76,6 +76,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .sliderContainer {
@@ -121,7 +122,7 @@ body {
 
 
 /* Buttons */
-.clearButton, .removeGridLines, .changeColor {
+.clearButton, .removeGridLines {
     appearance: button;
     background-color: #00000085;
     border: solid transparent;
@@ -157,16 +158,12 @@ body {
 }
 
 .removeGridLines:hover {
-    background-color: rgba(0, 155, 226, 0.555);
-}
-
-.changeColor:hover {
-    background-color: rgba(134, 5, 255, 0.555);
+    background-color: rgba(255, 0, 0, 0.555);
 }
 
 .clearButton:after {
     background-clip: padding-box;
-    background-color: #8b0000;
+    background-color: #526379;
     border: solid transparent;
     border-radius: 16px;
     border-width: 0 0 4px;
@@ -181,7 +178,7 @@ body {
 
 .removeGridLines:after {
     background-clip: padding-box;
-    background-color: #003985;
+    background-color: #526379;
     border: solid transparent;
     border-radius: 16px;
     border-width: 0 0 4px;
@@ -194,21 +191,6 @@ body {
     z-index: -1;
   }
 
-.changeColor:after {
-    background-clip: padding-box;
-    background-color: rgba(255, 80, 255, 0.664);
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    bottom: -4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
-}
-
 .clearButton:main,
 .clearButton:focus {
     user-select: auto;
@@ -216,11 +198,6 @@ body {
 
 .removeGridLines:main,
 .removeGridLines:focus {
-    user-select: auto;
-}
-
-.changeColor:main,
-.changeColor:focus {
     user-select: auto;
 }
 
@@ -234,20 +211,11 @@ body {
     -webkit-filter: brightness(1.1);
 }
 
-.changeColor:hover:not(:disabled) {
-    filter: brightness(1.1);
-    -webkit-filter: brightness(1.1);
-}
-
 .clearButton:disabled {
     cursor: auto;
 }
 
 .removeGridLines:disabled {
-    cursor: auto;
-}
-
-.changeColor:disabled {
     cursor: auto;
 }
 
@@ -261,11 +229,28 @@ body {
     background: none;
 }
 
-.changeColor:active {
-    border-width: 4px 0 0;
-    background: none;
+#colour {
+    border: solid transparent;
+    border-radius: 16px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: din-round,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
+.changeColour {
+    width: 35px;
+    height: 35px;
+    border: none;
+}
 
 /* Confetti and Gradient Toggles */
 
