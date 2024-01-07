@@ -74,6 +74,7 @@ body {
 
 .buttonContainer {
     padding: 10px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -261,8 +262,6 @@ body {
 }
 
 .modeInput .mode {
-    border: solid transparent;
-    border-radius: 16px;
     box-sizing: border-box;
     color: #ffffff;
     font-family: din-round,sans-serif;
@@ -272,7 +271,7 @@ body {
     line-height: 20px;
     outline: none;
     overflow: visible;
-    padding: 13px 16px;
+    padding: 2px 16px;
     text-align: center;
     text-transform: uppercase;
 }
