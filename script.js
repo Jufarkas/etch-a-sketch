@@ -1,8 +1,12 @@
 const mainGrid = document.querySelector('.mainGrid');
 let allSquares = document.querySelectorAll('.squares');
+const confetti = document.querySelector('#confettiCheck');
+const gradient = document.querySelector('#gradientCheck');
 
 const clearGrid = document.querySelector('.clearButton');
 const removeGridLines = document.querySelector('.removeGridLines');
+const colourBtn = document.querySelector('.changeColour');
+
 
 //***************************** SLIDER ***********************//
 
@@ -18,7 +22,9 @@ slider.oninput = function() {
 };
 
 
-//************* 'Clear' AND 'Remove Grid' BUTTONS *************//
+//***************** CLEAR/GRID/COLOUR BUTTONS *****************//
+
+// clear button
 
 clearGrid.addEventListener('click', () => {
     const squares = document.querySelectorAll('.square');
@@ -27,7 +33,7 @@ clearGrid.addEventListener('click', () => {
         });
 });
 
-// remove grid button below
+// remove grid button
 
 removeGridLines.addEventListener('click', () => {
     if (removeGridLines.textContent == "Remove Grid"){
@@ -48,6 +54,21 @@ removeGridLines.addEventListener('click', () => {
         removeGridLines.textContent = "Remove Grid";
     };
 });
+
+// colour button
+
+colourBtn.addEventListener('click', () => {
+    const squareSize = document.querySelectorAll('.square'); 
+    squareSize.forEach(squares => {
+        squares.addEventListener('mousemove', e =>{
+            if (e.buttons === 1){
+                squares.style.backgroundColor = colourBtn.value;
+            } else if (e.buttons === 2){
+                squares.style.backgroundColor = "transparent";
+            };
+        });
+    });
+})
 
 
 //***************** FUNCTION TO RESIZE SQUARES ******************//
@@ -75,13 +96,39 @@ function squareListener() {
     squareSize.forEach(squares => {
         squares.addEventListener('mousemove', e =>{
             if (e.buttons === 1){
-                squares.style.backgroundColor = "black";
+                squares.style.backgroundColor = colourBtn.value;
             } else if (e.buttons === 2){
                 squares.style.backgroundColor = "transparent";
             };
         });
     });
 };
+
+
+// function to watch for confetti && gradient modes
+
+
+// for gradient button, make each square X amount darker for each mouseover while "gradientButton" is turned on
+
+
+// const randomColor = Math.floor(Math.random()*16777215).toString(16);
+// to change to a random color with " "#" + randomColor; "
+// https://codepen.io/chriscoyier/pen/Xojwzw
+
+
+
+// function modeCheck() {
+//     const randomColor = Math.floor(Math.random()*16777215).toString(16); 
+//     if (confetti.checked = true) {
+//         allSquares.style.backgrondColor = "#" + randomColor;
+//     } else if (gradient.checked = true){
+//         allSquares.style.backgrondColor = gradient
+//     } else if (other button = true){
+//         allSquares.style.backgrondColor = gradient
+//     } else {
+
+//     }
+// };
 
 
 //*********************** CREATE START GRID *********************//
@@ -98,7 +145,6 @@ function createStartGrid() {
 createStartGrid();
 
 //****** ADD / REMOVE GRID SQUARES BASED ON SLIDER VALUE ******//
-
 
 slider.addEventListener('input', () => {
     let newValue = slider.value;
