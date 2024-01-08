@@ -59,8 +59,8 @@ removeGridLines.addEventListener('click', () => {
 
 colourBtn.addEventListener('click', () => {
     const squareSize = document.querySelectorAll('.square'); 
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     squareSize.forEach(squares => {
+        let randomColor = Math.floor(Math.random()*16777215).toString(16);
         if (confetti.checked == true){
             squares.addEventListener('mousemove', e =>{
                 if (e.buttons === 1){
@@ -86,7 +86,6 @@ colourBtn.addEventListener('click', () => {
 
 function resizeGrid() {
     const squareSize = document.querySelectorAll('.square');
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     squareSize.forEach(squares => {
         squares.style.width = 600 / slider.value + "px";
         squares.style.height = 600 / slider.value + "px";
@@ -96,17 +95,7 @@ function resizeGrid() {
         };
     });
     squareListener();
-    if (confetti.checked == true){
-        squareSize.forEach(squares => {
-            squares.addEventListener('mousemove', e =>{
-                if (e.buttons === 1){
-                    squares.style.backgroundColor = "#" + randomColor;
-                } else if (e.buttons === 2){
-                    squares.style.backgroundColor = "transparent";
-                };
-            });
-        });
-    }
+    confettiCheck();
 };
 
 
@@ -128,11 +117,11 @@ function squareListener() {
 
 // function to watch for confetti && gradient modes
 
-confetti.addEventListener('click', () => {
+function confettiCheck() {
     const squareSize = document.querySelectorAll('.square');
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     if (confetti.checked == true){
         squareSize.forEach(squares => {
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
             squares.addEventListener('mousemove', e =>{
                 if (e.buttons === 1){
                     squares.style.backgroundColor = "#" + randomColor;
@@ -143,7 +132,11 @@ confetti.addEventListener('click', () => {
         });
     } else {
         squareListener()
-    }
+    };
+};
+
+confetti.addEventListener('click', () => {
+    confettiCheck();
 });
 
 
