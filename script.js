@@ -60,8 +60,8 @@ removeGridLines.addEventListener('click', () => {
 colourBtn.addEventListener('click', () => {
     const squareSize = document.querySelectorAll('.square'); 
     squareSize.forEach(squares => {
-        let randomColor = Math.floor(Math.random()*16777215).toString(16);
         if (confetti.checked == true){
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
             squares.addEventListener('mousemove', e =>{
                 if (e.buttons === 1){
                     squares.style.backgroundColor = "#" + randomColor;
@@ -121,8 +121,8 @@ function confettiCheck() {
     const squareSize = document.querySelectorAll('.square');
     if (confetti.checked == true){
         squareSize.forEach(squares => {
-            let randomColor = Math.floor(Math.random()*16777215).toString(16);
             squares.addEventListener('mousemove', e =>{
+                let randomColor = Math.floor(Math.random()*16777215).toString(16);
                 if (e.buttons === 1){
                     squares.style.backgroundColor = "#" + randomColor;
                 } else if (e.buttons === 2){
