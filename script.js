@@ -1,7 +1,7 @@
 const mainGrid = document.querySelector('.mainGrid');
 let allSquares = document.querySelectorAll('.squares');
-const confetti = document.querySelector('#confettiCheck');
-const gradient = document.querySelector('#gradientCheck');
+const confetti = document.getElementById('confettiCheck');
+const gradient = document.getElementById('gradientCheck');
 
 const clearGrid = document.querySelector('.clearButton');
 const removeGridLines = document.querySelector('.removeGridLines');
@@ -55,37 +55,58 @@ removeGridLines.addEventListener('click', () => {
     };
 });
 
-// colour button
+// colour button (watches for confetti mode toggle as well)
 
 colourBtn.addEventListener('click', () => {
     const squareSize = document.querySelectorAll('.square'); 
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     squareSize.forEach(squares => {
-        squares.addEventListener('mousemove', e =>{
-            if (e.buttons === 1){
-                squares.style.backgroundColor = colourBtn.value;
-            } else if (e.buttons === 2){
-                squares.style.backgroundColor = "transparent";
-            };
-        });
+        if (confetti.checked == true){
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = "#" + randomColor;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
+        } else {
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = colourBtn.value;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
+        };
     });
-})
+});
 
 
 //***************** FUNCTION TO RESIZE SQUARES ******************//
 
 function resizeGrid() {
     const squareSize = document.querySelectorAll('.square');
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     squareSize.forEach(squares => {
         squares.style.width = 600 / slider.value + "px";
         squares.style.height = 600 / slider.value + "px";
         squares.style.backgroundColor = "transparent";
-// below is to stop new squares from having a grid when 
-// they're created if user has turned off grid already
         if (removeGridLines.textContent == "Add Grid"){ 
             squares.style.borderColor = "transparent";
         };
     });
     squareListener();
+    if (confetti.checked == true){
+        squareSize.forEach(squares => {
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = "#" + randomColor;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
+        });
+    }
 };
 
 
@@ -107,28 +128,23 @@ function squareListener() {
 
 // function to watch for confetti && gradient modes
 
-
-// for gradient button, make each square X amount darker for each mouseover while "gradientButton" is turned on
-
-
-// const randomColor = Math.floor(Math.random()*16777215).toString(16);
-// to change to a random color with " "#" + randomColor; "
-// https://codepen.io/chriscoyier/pen/Xojwzw
-
-
-
-// function modeCheck() {
-//     const randomColor = Math.floor(Math.random()*16777215).toString(16); 
-//     if (confetti.checked = true) {
-//         allSquares.style.backgrondColor = "#" + randomColor;
-//     } else if (gradient.checked = true){
-//         allSquares.style.backgrondColor = gradient
-//     } else if (other button = true){
-//         allSquares.style.backgrondColor = gradient
-//     } else {
-
-//     }
-// };
+confetti.addEventListener('click', () => {
+    const squareSize = document.querySelectorAll('.square');
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    if (confetti.checked == true){
+        squareSize.forEach(squares => {
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = "#" + randomColor;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
+        });
+    } else {
+        squareListener()
+    }
+});
 
 
 //*********************** CREATE START GRID *********************//
