@@ -23,8 +23,8 @@ body {
     font-size: 50px;
     font-family: "Lemon", Arial, Helvetica, sans-serif;
     color: white;
-    text-shadow: 1px 1px 2px red,
-    0 0 1em rgb(255, 255, 255),
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.541),
+    0 0 0.6em rgb(255, 255, 255),
     0 0 0.2em rgba(0, 0, 255, 0.5);
     display: flex;
     justify-content: center;
@@ -48,15 +48,15 @@ body {
     width: 350px;
     text-align: center;
     padding: 7px;
-    text-shadow: 1px 1px 2px red,
-    0 0 1em rgb(255, 255, 255),
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.541),
+    0 0 0.6em rgb(255, 255, 255),
     0 0 0.2em rgba(0, 0, 255, 0.5);
 }
 
 .container {
     border-radius: 25px;
-    width: 730px;
-    height: 1000px;
+    width: 760px;
+    height: 960px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -159,7 +159,7 @@ body {
 }
 
 .removeGridLines:hover {
-    background-color: rgba(255, 0, 0, 0.555);
+    background-color: rgba(56, 76, 255, 0.555);
 }
 
 .clearButton:after {
