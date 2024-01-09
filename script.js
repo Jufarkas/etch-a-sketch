@@ -1,5 +1,5 @@
 const mainGrid = document.querySelector('.mainGrid');
-let allSquares = document.querySelectorAll('.squares');
+let allSquares = document.querySelectorAll('.square');
 const confetti = document.getElementById('confettiCheck');
 const gradient = document.getElementById('gradientCheck');
 
@@ -30,6 +30,7 @@ clearGrid.addEventListener('click', () => {
     const squares = document.querySelectorAll('.square');
         squares.forEach(squares => {
         squares.style.removeProperty('background-color');
+        squares.style.removeProperty('opacity');
         });
 });
 
@@ -61,14 +62,9 @@ colourBtn.addEventListener('click', () => {
     const squareSize = document.querySelectorAll('.square'); 
     squareSize.forEach(squares => {
         if (confetti.checked == true){
-            let randomColor = Math.floor(Math.random()*16777215).toString(16);
-            squares.addEventListener('mousemove', e =>{
-                if (e.buttons === 1){
-                    squares.style.backgroundColor = "#" + randomColor;
-                } else if (e.buttons === 2){
-                    squares.style.backgroundColor = "transparent";
-                };
-            });
+            return;
+        } else if (gradient.checked == true){
+            return;
         } else {
             squares.addEventListener('mousemove', e =>{
                 if (e.buttons === 1){
@@ -94,30 +90,61 @@ function resizeGrid() {
             squares.style.borderColor = "transparent";
         };
     });
-    squareListener();
-    confettiCheck();
+    if (confetti.checked == true) {
+        confettiActive();
+    } else if (gradient.checked == true) {
+        gradientActive();
+    } else {
+        const squareSize = document.querySelectorAll('.square');
+        squareSize.forEach(squares => {
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = colourBtn.value;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
+        });
+    };
 };
 
 
 // add event listener to squares
 
 function squareListener() {
-    const squareSize = document.querySelectorAll('.square');
-    squareSize.forEach(squares => {
-        squares.addEventListener('mousemove', e =>{
-            if (e.buttons === 1){
-                squares.style.backgroundColor = colourBtn.value;
-            } else if (e.buttons === 2){
-                squares.style.backgroundColor = "transparent";
-            };
+    if (confetti.checked == true) {
+        return;
+    } else if (gradient.checked == true) {
+        return;
+    } else {
+        const squareSize = document.querySelectorAll('.square');
+        squareSize.forEach(squares => {
+            squares.addEventListener('mousemove', e =>{
+                if (e.buttons === 1){
+                    squares.style.backgroundColor = colourBtn.value;
+                } else if (e.buttons === 2){
+                    squares.style.backgroundColor = "transparent";
+                };
+            });
         });
-    });
+    };
 };
 
 
 // function to watch for confetti && gradient modes
 
-function confettiCheck() {
+// below function to stop confetti and gradient toggles from both being active
+// 'onchange' assigned to each checkbox
+
+function modeCheck(input) {
+    const mode = document.querySelectorAll('input[type=checkbox]');
+    for (var x = 0, c; c = mode[x]; x++) {
+     c.disabled = !(!input.checked || c === input);
+    }
+};
+
+
+function confettiActive() {
     const squareSize = document.querySelectorAll('.square');
     if (confetti.checked == true){
         squareSize.forEach(squares => {
@@ -135,9 +162,37 @@ function confettiCheck() {
     };
 };
 
+
 confetti.addEventListener('click', () => {
-    confettiCheck();
+    confettiActive();
 });
+
+
+
+// will come back to try to figure out
+
+// function gradientActive() {
+//     const squareSize = document.querySelectorAll('.square');
+//     let rgb = "red";
+//     if (gradient.checked == true){
+//         squareSize.forEach(squares => {
+//                 squares.addEventListener('mousemove', e =>{
+//                     if (e.buttons === 1){
+//                         squares.style.backgroundColor = rgb;
+//                     } else if (e.buttons === 2){
+//                         squares.style.backgroundColor = "transparent";
+//                     };
+//                 });
+//             });
+//     } else {
+//         squareListener()
+//     };
+// };
+
+
+// gradient.addEventListener('click', () => {
+//     gradientActive();
+// });
 
 
 //*********************** CREATE START GRID *********************//
@@ -152,6 +207,7 @@ function createStartGrid() {
 };
 
 createStartGrid();
+
 
 //****** ADD / REMOVE GRID SQUARES BASED ON SLIDER VALUE ******//
 
